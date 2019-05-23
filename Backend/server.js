@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 //DB Config
 const db =require('./config/keys').mongoURI;
-mongoose.connect(db,{useNewUrlParser:true})
+mongoose.connect(process.env.MONGODB_URI || db,{useNewUrlParser:true})
 	.then(()=>console.log("MONGODB CONNECTED"))
 	.catch(()=>console.log("ERROR"));
 
