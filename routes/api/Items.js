@@ -7,14 +7,14 @@ router.use(cors());
 const Item=require('../../models/Item');
 
 
-router.get("/get", (req, res) => {
+router.get("/", (req, res) => {
   Item.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true, data: data });
   });
 });
 
-router.post("/post",(req,res)=>{
+router.post("/",(req,res)=>{
 	var mydata=new Item();
 	const {name,id}=req.body;
 	mydata.name=name;
@@ -28,7 +28,7 @@ router.post("/post",(req,res)=>{
 	})
 })
 
-router.delete("/delete",(req,res)=>{
+router.delete("/",(req,res)=>{
 	const {id}=req.body;
 	Item.findOneAndDelete({id:id}, err=>{
 		if(err) return res.json({success:false,error:err});

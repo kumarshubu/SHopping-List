@@ -24,7 +24,7 @@ export default class ShoppingList extends React.Component{
   }
 
   getDataFromDb = () => {
-    fetch("http://localhost:5000/get")
+    fetch("http://localhost:5000/"||process.env.baseURL)
       .then(data => data.json())
       .then(res => this.setState({ items: res.data }));
   };
@@ -35,14 +35,14 @@ export default class ShoppingList extends React.Component{
       while(currentIds.includes(idToBeAdded)){
         ++idToBeAdded;
       }
-  	axios.post("http://localhost:5000/post",{
+  	axios.post("http://localhost:5000/"||process.env.baseURL,{
   		id:idToBeAdded,
   		name:name
   	});
   };
 
   deleteData=(id)=>{
-  	axios.delete("http://localhost:5000/delete",{
+  	axios.delete("http://localhost:5000/"||process.env.baseURL,{
   		      data: {
         id: id
       }
