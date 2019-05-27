@@ -7,7 +7,7 @@ router.use(cors());
 const Item=require('../../models/Item');
 
 
-router.get("/", (req, res) => {
+router.get("/get", (req, res) => {
   Item.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true, data: data });

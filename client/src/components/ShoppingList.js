@@ -24,7 +24,7 @@ export default class ShoppingList extends React.Component{
   }
 
   getDataFromDb = () => {
-    fetch("http://localhost:5000/"||process.env.baseURL)
+    fetch("http://localhost:5000/get"||"process.env.baseURL/get")
       .then(data => data.json())
       .then(res => this.setState({ items: res.data }));
   };
