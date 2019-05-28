@@ -35,14 +35,14 @@ export default class ShoppingList extends React.Component{
       while(currentIds.includes(idToBeAdded)){
         ++idToBeAdded;
       }
-  	axios.post("process.env.PORT"||"http://localhost:5000/",{
+  	axios.post("/"||"http://localhost:5000/",{
   		id:idToBeAdded,
   		name:name
   	});
   };
 
   deleteData=(id)=>{
-  	axios.delete("process.env.PORT"||"http://localhost:5000/",{
+  	axios.delete("/"||"http://localhost:5000/",{
   		      data: {
         id: id
       }
