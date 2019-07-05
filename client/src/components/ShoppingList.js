@@ -2,6 +2,7 @@ import React from 'react';
 import axios from "axios";
 import {Container, ListGroup,ListGroupItem,Button} from 'reactstrap';
 import {CSSTransition,TransitionGroup} from 'react-transition-group';
+import './List.css';
 export default class ShoppingList extends React.Component{
 	state={
 		items:[
@@ -66,11 +67,11 @@ export default class ShoppingList extends React.Component{
 				>
 				Add Item
 				</Button>
-				<ListGroup>
+				<ListGroup className="list">
 					<TransitionGroup className="shopping-list">
 					{items.map(({id,name})=>(
 						<CSSTransition key={id} timeout={80} classNames="fade">
-					<ListGroupItem>
+					<ListGroupItem className="subList">
 					<Button
 					className="remove-btn"
 					color="danger"

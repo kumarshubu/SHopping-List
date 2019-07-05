@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers&display=swap');
+body{
+	background-color: #5f5fa1;
+}
+.list{
+	color:#13233b;
+	text-transform: capitalize;
+	font-family: 'Bangers', cursive;
+	font-size: 110%;
+}
+.subList:hover{
+	color:#d4113b;
+	background-color:#f5e6ea;
+}
+.remove-btn{
+	font-family: monospace;
+}
+.subList:hover .remove-btn{
+	color: #fff;	
+	background-color: #e64e5d;
+}
