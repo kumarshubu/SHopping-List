@@ -12,7 +12,7 @@ export default class ShoppingList extends React.Component{
   componentDidMount() {
     this.getDataFromDb();
     if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 2000);
+      let interval = setInterval(this.getDataFromDb, 0);
       this.setState({ intervalIsSet: interval });
     }
   }	
