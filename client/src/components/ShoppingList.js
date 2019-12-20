@@ -6,7 +6,8 @@ import './List.css';
 export default class ShoppingList extends React.Component{
 	state={
 		items:[
-		]
+		],
+		intervalIsSet:null
 	}
   componentDidMount() {
     this.getDataFromDb();
