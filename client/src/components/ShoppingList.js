@@ -6,13 +6,12 @@ import './List.css';
 export default class ShoppingList extends React.Component{
 	state={
 		items:[
-		{id:Number},
 		]
 	}
   componentDidMount() {
     this.getDataFromDb();
     if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 0);
+      let interval = setInterval(this.getDataFromDb, 1000);
       this.setState({ intervalIsSet: interval });
     }
   }	
