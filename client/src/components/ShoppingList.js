@@ -52,7 +52,8 @@ export default class ShoppingList extends React.Component{
   
 	render(){
 		const {items} = this.state;
-		if(items)//to check if DB ==null
+		//to check if DB ==null		
+		if(items)
 		return(
 			<Container>
 				<Button
