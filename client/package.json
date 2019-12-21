@@ -9,9 +9,8 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0",
     "react-transition-group": "^4.0.0",
-    "reactstrap": "^8.0.0",
-    "uuid": "^3.3.2"
-  },
+    "reactstrap": "^8.0.0"
+      },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

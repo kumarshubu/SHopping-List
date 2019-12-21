@@ -51,7 +51,7 @@ export default class ShoppingList extends React.Component{
   }
   
 	render(){
-		const { items,id } = this.state;
+		const {items} = this.state;
 		if(items)//to check if DB ==null
 		return(
 			<Container>
