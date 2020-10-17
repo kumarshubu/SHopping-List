@@ -63,9 +63,14 @@ export default class ShoppingList extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
+
+		if(document.getElementById("input").value==""){
+			return;
+		}
 		this.postDataToDb(this.state.currentItem)
 		document.getElementById("input").value = ""
 		this.setState({ disabled: true })
+		this.setState({ currentItem:""})
 	}
 
 	render() {
