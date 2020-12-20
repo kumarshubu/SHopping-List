@@ -4,13 +4,13 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path =require("path");
 const items = require('./routes/api/Items.js');
+require('dotenv').config();
 
 //bodyparser middleware
 app.use(bodyParser.json());
 
 //DB Config
-const db =require('./config/keys').mongoURI;
-mongoose.connect(process.env.MONGODB_URI || db,{useNewUrlParser:true})
+mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true})
 	.then(()=>console.log("MONGODB CONNECTED"))
 	.catch(()=>console.log("ERROR"));
 
