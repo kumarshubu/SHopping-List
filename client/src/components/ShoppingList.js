@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input } from 'reactstrap';
 import './List.css';
 export default class ShoppingList extends React.Component {
 	state = {
@@ -41,30 +41,52 @@ export default class ShoppingList extends React.Component {
 		while (currentIds.includes(idToBeAdded)) {
 			++idToBeAdded;
 		}
+		
+		let temp = this.state.items;
+		temp.push({id:idToBeAdded, name:name});
+		this.setState({items:temp});
+		
 		axios.post("/" || "http://localhost:5000/", {
 			id: idToBeAdded,
 			name: name
 		})
 			.then(() => {
-				this.getDataFromDb()
+				this.setState({ disabled: false })
 			})
-			.catch(err => console.log(err))
+			.catch(err => {
+				console.log(err);
+				let temp = this.state.items;
+				let index = temp.findIndex(e=>e.id===idToBeAdded);
+				temp.splice(index,1);
+				this.setState({items:temp});
+			})
 	};
 
 	deleteData = (id) => {
+		let itemsData = this.state.items;
+		let temp = itemsData;
+		let index = temp.findIndex(e=>e.id===id);
+		temp.splice(index,1);
+		this.setState({items:temp});
+		
 		axios.delete("/" || "http://localhost:5000/", {
 			data: {
 				id: id
 			}
 		})
-			.then(() => { this.getDataFromDb() })
-			.catch(err => console.log(err))
+			.then(() => { 
+				//do nothing
+			})
+			.catch(err => {
+				console.log(err);
+				this.setState({items:itemsData});
+			})
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault()
 
-		if(document.getElementById("input").value==""){
+		if(document.getElementById("input").value===""){
 			return;
 		}
 		this.postDataToDb(this.state.currentItem)
@@ -88,7 +110,7 @@ export default class ShoppingList extends React.Component {
 										disabled={this.state.disabled}
 										type="submit"
 										color="dark"
-										style={{ marginBottom: '2rem' }}
+										style={{ marginBottom: '2rem',  outline: "none", boxShadow: "none" }}
 										onClick={this.handleSubmit}
 									>
 										Add Item
@@ -110,7 +132,7 @@ export default class ShoppingList extends React.Component {
 											onClick={() => this.deleteData(id)}
 										>
 											&times;
-					</Button>
+										</Button>
 										{name}
 									</ListGroupItem>
 								</CSSTransition>
