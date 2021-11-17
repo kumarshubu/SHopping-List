@@ -6,7 +6,6 @@ import{
 	NavbarBrand,
 	Nav,
 	NavItem,
-	NavLink,
 	Container
 } from 'reactstrap';
 
@@ -30,7 +29,7 @@ render(){
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" Navbar>
 						<NavItem>
-							<NavLink href="https://github.com/kumarshubu">GitHub</NavLink>
+							{/* <NavLink href="https://github.com/kumarshubu">GitHub</NavLink> */}
 						</NavItem>
 					</Nav>
 				</Collapse>
