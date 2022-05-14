@@ -4,8 +4,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path =require("path");
 const items = require('./routes/api/Items.js');
+var compression = require('compression')
 require('dotenv').config();
 
+app.use(compression());
 //bodyparser middleware
 app.use(bodyParser.json());
 
